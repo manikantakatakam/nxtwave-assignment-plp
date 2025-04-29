@@ -1,85 +1,71 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
+import { Search, Heart, ShoppingBag, User } from "lucide-react";
 
 export const Header = () => {
   return (
     <header className="w-full">
-      <div className="bg-black flex w-full items-center gap-[40px_100px] text-xs text-[#EB4C6B] font-normal tracking-[1px] justify-between flex-wrap px-[274px] py-2 max-md:max-w-full max-md:px-5">
-        <div className="self-stretch flex items-center gap-2.5 my-auto">
+      <div className="bg-black flex w-full items-center justify-center gap-8 md:gap-16 lg:gap-24 text-xs text-[#EB4C6B] font-normal py-1 px-4">
+        <div className="flex items-center gap-2">
           <img
             src="https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/e36faaa33a34101d72a761d73a288b64f64f8f9c?placeholderIfAbsent=true"
-            className="aspect-[1] object-contain w-4 self-stretch shrink-0 my-auto"
+            className="w-3 h-3 object-contain"
           />
-          <div>Lorem ipsum dolor</div>
+          <span>Lorem ipsum dolor</span>
         </div>
-        <div className="self-stretch flex items-center gap-2.5 my-auto">
+        <div className="hidden md:flex items-center gap-2">
           <img
             src="https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/e36faaa33a34101d72a761d73a288b64f64f8f9c?placeholderIfAbsent=true"
-            className="aspect-[1] object-contain w-4 self-stretch shrink-0 my-auto"
+            className="w-3 h-3 object-contain"
           />
-          <div>Lorem ipsum dolor</div>
+          <span>Lorem ipsum dolor</span>
         </div>
-        <div className="self-stretch flex items-center gap-2.5 my-auto">
+        <div className="hidden lg:flex items-center gap-2">
           <img
             src="https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/e36faaa33a34101d72a761d73a288b64f64f8f9c?placeholderIfAbsent=true"
-            className="aspect-[1] object-contain w-4 self-stretch shrink-0 my-auto"
+            className="w-3 h-3 object-contain"
           />
-          <div>Lorem ipsum dolor</div>
+          <span>Lorem ipsum dolor</span>
         </div>
       </div>
 
-      <div className="border-b-neutral-200 bg-white flex w-full flex-col overflow-hidden items-stretch tracking-[1px] px-20 py-[30px] border-b border-solid max-md:max-w-full max-md:px-5">
-        <div className="flex w-full max-w-[1248px] items-center gap-5 whitespace-nowrap justify-between max-md:max-w-full">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/90d8a493346c2b616adbac449071c60b6d96cf71?placeholderIfAbsent=true"
-            className="aspect-[1] object-contain w-9 self-stretch shrink-0 my-auto"
-          />
-          <div className="text-black text-4xl font-extrabold self-stretch">
+      <div className="border-b border-neutral-200 py-6 px-4 md:px-8 lg:px-12">
+        <div className="container mx-auto flex items-center justify-between">
+          <div className="md:hidden">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/90d8a493346c2b616adbac449071c60b6d96cf71?placeholderIfAbsent=true"
+              className="w-6 h-6 object-contain"
+            />
+          </div>
+          
+          <div className="text-black text-4xl font-extrabold flex-1 text-center">
             LOGO
           </div>
-          <div className="self-stretch flex items-center gap-6 text-base text-[#252020] font-bold my-auto">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/97d421a488a1e4eb7291fbf4d3e62edcb993a8c1?placeholderIfAbsent=true"
-              className="aspect-[1] object-contain w-6 self-stretch shrink-0 my-auto"
-            />
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/0c88c9e138b773985abd1872fded389e039aa2bc?placeholderIfAbsent=true"
-              className="aspect-[1] object-contain w-6 self-stretch shrink-0 my-auto"
-            />
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/b52c53ed4c6e41d30f9498a6d6744c3c3e5ef313?placeholderIfAbsent=true"
-              className="aspect-[1] object-contain w-6 self-stretch shrink-0 my-auto"
-            />
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/f393dc3e782e36f4d793bbc2945cc82fd037e3cb?placeholderIfAbsent=true"
-              className="aspect-[1] object-contain w-6 self-stretch shrink-0 my-auto"
-            />
-            <div className="self-stretch flex items-center gap-[5px] my-auto">
-              <div>ENG</div>
+          
+          <div className="flex items-center gap-4">
+            <Search className="w-5 h-5" />
+            <Heart className="w-5 h-5" />
+            <User className="w-5 h-5 hidden md:block" />
+            <ShoppingBag className="w-5 h-5" />
+            <div className="hidden md:flex items-center gap-1 ml-2">
+              <span className="text-sm font-medium">ENG</span>
               <img
                 src="https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/e771220b378b1021e4a4911659f1fa0ae80c2cba?placeholderIfAbsent=true"
-                className="aspect-[1] object-contain w-4 self-stretch shrink-0 my-auto"
+                className="w-3 h-3 object-contain"
               />
             </div>
           </div>
         </div>
 
-        <nav className="self-center flex gap-[40px_64px] text-xl text-[#252020] font-bold flex-wrap mt-[60px] max-md:max-w-full max-md:mt-10">
-          <Link to="/shop" className="whitespace-nowrap w-[52px]">
-            SHOP
-          </Link>
-          <Link to="/skills" className="whitespace-nowrap w-[65px]">
-            SKILLS
-          </Link>
-          <Link to="/stories" className="whitespace-nowrap w-[79px]">
-            STORIES
-          </Link>
-          <Link to="/about" className="whitespace-nowrap w-[65px]">
-            ABOUT
-          </Link>
-          <Link to="/contact" className="w-[119px]">
-            CONTACT US
-          </Link>
+        <nav className="container mx-auto flex justify-center mt-6">
+          <div className="flex gap-6 md:gap-10 text-sm md:text-base uppercase font-semibold">
+            <Link to="/shop" className="hover:text-gray-600">Shop</Link>
+            <Link to="/skills" className="hover:text-gray-600">Skills</Link>
+            <Link to="/stories" className="hover:text-gray-600">Stories</Link>
+            <Link to="/about" className="hover:text-gray-600">About</Link>
+            <Link to="/contact-us" className="hover:text-gray-600">Contact Us</Link>
+          </div>
         </nav>
       </div>
     </header>
