@@ -6,9 +6,10 @@ import { useIsMobile } from "@/hooks/use-mobile";
 interface ProductCardProps {
   name: string;
   imageUrl: string;
+  price?: number;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ name, imageUrl }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ name, imageUrl, price }) => {
   const isMobile = useIsMobile();
   
   return (
@@ -32,9 +33,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ name, imageUrl }) => {
           <h3 className="text-[#252020] text-sm font-bold uppercase line-clamp-2">
             {name}
           </h3>
-          <div className="text-[#888792] text-xs font-normal mt-1 cursor-pointer hover:underline">
-            Sign in or Create an account to see pricing
-          </div>
+          {price ? (
+            <div className="text-[#252020] text-xs font-bold mt-1">
+              ${price.toFixed(2)}
+            </div>
+          ) : (
+            <div className="text-[#888792] text-xs font-normal mt-1 cursor-pointer hover:underline">
+              Sign in or Create an account to see pricing
+            </div>
+          )}
           {isMobile && (
             <div className="text-[#888792] text-xs font-normal mt-1">
               <span className="text-[#252020]">SOLD OUT</span> on AUGUST 15, 2023

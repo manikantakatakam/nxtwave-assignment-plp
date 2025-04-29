@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
@@ -7,94 +6,117 @@ import { ProductCard } from "../components/products/ProductCard";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Heart } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-
-// Expanded product data to match the reference image
-const products = [
-  {
-    id: 1,
-    name: "RECYCLED BACKPACK",
-    imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/33cb42c0cde016064a0bb86bc21c19d866cfd280?placeholderIfAbsent=true",
-  },
-  {
-    id: 2,
-    name: "PRODUCT NAME",
-    imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/f0e39fceab3b60ec63129d86c8759ae0b7262c01?placeholderIfAbsent=true",
-  },
-  { 
-    id: 3, 
-    name: "PRODUCT NAME", 
-    imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/b052db9694b7c57d2c908aae9c785a19ef50ec66?placeholderIfAbsent=true" 
-  },
-  { 
-    id: 4, 
-    name: "PRODUCT NAME", 
-    imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/e1fe636b03b5b03c3d4a8f99554cd56a08d2d997?placeholderIfAbsent=true" 
-  },
-  { 
-    id: 5, 
-    name: "PRODUCT NAME", 
-    imageUrl: "/lovable-uploads/5b4aade0-59f6-4799-af5e-eaf98cfdb2d5.png" 
-  },
-  { 
-    id: 6, 
-    name: "PRODUCT NAME", 
-    imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/f0e39fceab3b60ec63129d86c8759ae0b7262c01?placeholderIfAbsent=true" 
-  },
-  { 
-    id: 7, 
-    name: "PRODUCT NAME", 
-    imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/b052db9694b7c57d2c908aae9c785a19ef50ec66?placeholderIfAbsent=true" 
-  },
-  { 
-    id: 8, 
-    name: "PRODUCT NAME", 
-    imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/e1fe636b03b5b03c3d4a8f99554cd56a08d2d997?placeholderIfAbsent=true" 
-  },
-  { 
-    id: 9, 
-    name: "PRODUCT NAME", 
-    imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/33cb42c0cde016064a0bb86bc21c19d866cfd280?placeholderIfAbsent=true" 
-  },
-  { 
-    id: 10, 
-    name: "PRODUCT NAME", 
-    imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/f0e39fceab3b60ec63129d86c8759ae0b7262c01?placeholderIfAbsent=true" 
-  },
-  { 
-    id: 11, 
-    name: "PRODUCT NAME", 
-    imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/b052db9694b7c57d2c908aae9c785a19ef50ec66?placeholderIfAbsent=true" 
-  },
-  { 
-    id: 12, 
-    name: "PRODUCT NAME", 
-    imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/e1fe636b03b5b03c3d4a8f99554cd56a08d2d997?placeholderIfAbsent=true" 
-  },
-  { 
-    id: 13, 
-    name: "PRODUCT NAME", 
-    imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/33cb42c0cde016064a0bb86bc21c19d866cfd280?placeholderIfAbsent=true" 
-  },
-  { 
-    id: 14, 
-    name: "PRODUCT NAME", 
-    imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/f0e39fceab3b60ec63129d86c8759ae0b7262c01?placeholderIfAbsent=true" 
-  },
-  { 
-    id: 15, 
-    name: "PRODUCT NAME", 
-    imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/b052db9694b7c57d2c908aae9c785a19ef50ec66?placeholderIfAbsent=true" 
-  },
-  { 
-    id: 16, 
-    name: "PRODUCT NAME", 
-    imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/e1fe636b03b5b03c3d4a8f99554cd56a08d2d997?placeholderIfAbsent=true" 
-  },
-];
+import { useProducts } from "@/hooks/use-products";
 
 export default function Index() {
   const isMobile = useIsMobile();
   const [showFilter, setShowFilter] = useState(false);
+  
+  // Fetch products from API
+  const { data: products, isLoading, isError } = useProducts();
+
+  // Fallback products if API fails
+  const fallbackProducts = [
+    {
+      id: 1,
+      name: "RECYCLED BACKPACK",
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/33cb42c0cde016064a0bb86bc21c19d866cfd280?placeholderIfAbsent=true",
+      price: 59.99,
+    },
+    {
+      id: 2,
+      name: "PRODUCT NAME",
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/f0e39fceab3b60ec63129d86c8759ae0b7262c01?placeholderIfAbsent=true",
+      price: 49.99,
+    },
+    { 
+      id: 3, 
+      name: "PRODUCT NAME", 
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/b052db9694b7c57d2c908aae9c785a19ef50ec66?placeholderIfAbsent=true",
+      price: 79.99
+    },
+    { 
+      id: 4, 
+      name: "PRODUCT NAME", 
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/e1fe636b03b5b03c3d4a8f99554cd56a08d2d997?placeholderIfAbsent=true",
+      price: 39.99
+    },
+    { 
+      id: 5, 
+      name: "PRODUCT NAME", 
+      imageUrl: "/lovable-uploads/5b4aade0-59f6-4799-af5e-eaf98cfdb2d5.png",
+      price: 29.99
+    },
+    { 
+      id: 6, 
+      name: "PRODUCT NAME", 
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/f0e39fceab3b60ec63129d86c8759ae0b7262c01?placeholderIfAbsent=true",
+      price: 69.99
+    },
+    { 
+      id: 7, 
+      name: "PRODUCT NAME", 
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/b052db9694b7c57d2c908aae9c785a19ef50ec66?placeholderIfAbsent=true",
+      price: 89.99
+    },
+    { 
+      id: 8, 
+      name: "PRODUCT NAME", 
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/e1fe636b03b5b03c3d4a8f99554cd56a08d2d997?placeholderIfAbsent=true",
+      price: 54.99
+    },
+    { 
+      id: 9, 
+      name: "PRODUCT NAME", 
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/33cb42c0cde016064a0bb86bc21c19d866cfd280?placeholderIfAbsent=true",
+      price: 44.99
+    },
+    { 
+      id: 10, 
+      name: "PRODUCT NAME", 
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/f0e39fceab3b60ec63129d86c8759ae0b7262c01?placeholderIfAbsent=true",
+      price: 74.99
+    },
+    { 
+      id: 11, 
+      name: "PRODUCT NAME", 
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/b052db9694b7c57d2c908aae9c785a19ef50ec66?placeholderIfAbsent=true",
+      price: 64.99
+    },
+    { 
+      id: 12, 
+      name: "PRODUCT NAME", 
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/e1fe636b03b5b03c3d4a8f99554cd56a08d2d997?placeholderIfAbsent=true",
+      price: 94.99
+    },
+    { 
+      id: 13, 
+      name: "PRODUCT NAME", 
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/33cb42c0cde016064a0bb86bc21c19d866cfd280?placeholderIfAbsent=true",
+      price: 34.99
+    },
+    { 
+      id: 14, 
+      name: "PRODUCT NAME", 
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/f0e39fceab3b60ec63129d86c8759ae0b7262c01?placeholderIfAbsent=true",
+      price: 58.99
+    },
+    { 
+      id: 15, 
+      name: "PRODUCT NAME", 
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/b052db9694b7c57d2c908aae9c785a19ef50ec66?placeholderIfAbsent=true",
+      price: 88.99
+    },
+    { 
+      id: 16, 
+      name: "PRODUCT NAME", 
+      imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/e1fe636b03b5b03c3d4a8f99554cd56a08d2d997?placeholderIfAbsent=true",
+      price: 48.99
+    },
+  ];
+
+  // Use fetched products or fallback if loading/error
+  const displayProducts = products || fallbackProducts;
 
   return (
     <div className="min-h-screen bg-white">
@@ -119,7 +141,7 @@ export default function Index() {
           <div className="flex items-center gap-6">
             {!isMobile && (
               <div className="text-[#252020] text-lg font-bold uppercase">
-                3425 ITEMS
+                {displayProducts.length} ITEMS
               </div>
             )}
             <button 
@@ -149,16 +171,39 @@ export default function Index() {
 
         <hr className="border-neutral-200 mb-8" />
 
+        {/* Loading state */}
+        {isLoading && (
+          <div className="flex justify-center items-center py-20">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>
+          </div>
+        )}
+
+        {/* Error state */}
+        {isError && (
+          <div className="text-center py-10">
+            <p className="text-red-500 text-lg">Failed to load products. Please try again later.</p>
+            <Button 
+              onClick={() => window.location.reload()} 
+              className="mt-4 bg-black text-white"
+            >
+              Refresh Page
+            </Button>
+          </div>
+        )}
+
         {/* Product grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              name={product.name}
-              imageUrl={product.imageUrl}
-            />
-          ))}
-        </div>
+        {!isLoading && !isError && (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {displayProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                name={product.name}
+                imageUrl={product.imageUrl}
+                price={product.price}
+              />
+            ))}
+          </div>
+        )}
       </main>
 
       <Footer />
