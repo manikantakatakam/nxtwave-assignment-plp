@@ -48,7 +48,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               Sign in or Create an account to see pricing
             </div>
           )}
-          {isMobile && (
+          {isMobile && isLoggedIn && (
             <div className="text-[#888792] text-xs font-normal mt-1">
               <span className="text-[#252020]">SOLD OUT</span> on AUGUST 15, 2023
             </div>
