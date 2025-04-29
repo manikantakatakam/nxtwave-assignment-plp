@@ -1,9 +1,11 @@
 
 import React, { useState } from "react";
 import { Button } from "../ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const NewsletterForm = () => {
   const [email, setEmail] = useState("");
+  const isMobile = useIsMobile();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

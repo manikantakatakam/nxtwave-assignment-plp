@@ -5,18 +5,19 @@ import { Footer } from "../components/layout/Footer";
 import { FilterSidebar } from "../components/products/FilterSidebar";
 import { ProductCard } from "../components/products/ProductCard";
 import { Button } from "@/components/ui/button";
-import { Heart } from "lucide-react";
+import { ChevronDown, Heart } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Expanded product data to match the reference image
 const products = [
   {
     id: 1,
-    name: "PPXOC MILKYWAY DRESS IN PRESSED FLOWERS",
+    name: "RECYCLED BACKPACK",
     imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/33cb42c0cde016064a0bb86bc21c19d866cfd280?placeholderIfAbsent=true",
   },
   {
     id: 2,
-    name: "PPXOC MILKYWAY DRESS IN PRESSED FLOWERS",
+    name: "PRODUCT NAME",
     imageUrl: "https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/f0e39fceab3b60ec63129d86c8759ae0b7262c01?placeholderIfAbsent=true",
   },
   { 
@@ -32,7 +33,7 @@ const products = [
   { 
     id: 5, 
     name: "PRODUCT NAME", 
-    imageUrl: "/lovable-uploads/33122aa9-9cec-43d1-bf6e-065c40972043.png" 
+    imageUrl: "/lovable-uploads/5b4aade0-59f6-4799-af5e-eaf98cfdb2d5.png" 
   },
   { 
     id: 6, 
@@ -92,6 +93,7 @@ const products = [
 ];
 
 export default function Index() {
+  const isMobile = useIsMobile();
   const [showFilter, setShowFilter] = useState(false);
 
   return (
@@ -115,36 +117,40 @@ export default function Index() {
         {/* Product filters and count */}
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center gap-6">
-            <div className="text-[#252020] text-lg font-bold uppercase">
-              3425 ITEMS
-            </div>
+            {!isMobile && (
+              <div className="text-[#252020] text-lg font-bold uppercase">
+                3425 ITEMS
+              </div>
+            )}
             <button 
               className="flex items-center gap-2 text-base text-[#888792] font-normal underline"
               onClick={() => setShowFilter(!showFilter)}
             >
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/17a486bc7f4a124e8a2076d17b8d6f447a1915a8?placeholderIfAbsent=true"
-                className="w-4 h-4 object-contain"
-                alt="Filter"
-              />
-              <span className="underline uppercase">SHOW FILTER</span>
+              {isMobile ? (
+                <span className="uppercase font-bold text-[#252020] no-underline">FILTER</span>
+              ) : (
+                <>
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/17a486bc7f4a124e8a2076d17b8d6f447a1915a8?placeholderIfAbsent=true"
+                    className="w-4 h-4 object-contain"
+                    alt="Filter"
+                  />
+                  <span className="underline uppercase">SHOW FILTER</span>
+                </>
+              )}
             </button>
           </div>
 
           <div className="flex items-center gap-2 text-lg text-[#252020] font-bold uppercase">
             <span>RECOMMENDED</span>
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/68a6f8a1763cc13734547a9343204a65c32ab4c4?placeholderIfAbsent=true"
-              className="w-4 h-4 object-contain"
-              alt="Arrow down"
-            />
+            <ChevronDown className="w-4 h-4" />
           </div>
         </div>
 
         <hr className="border-neutral-200 mb-8" />
 
         {/* Product grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {products.map((product) => (
             <ProductCard
               key={product.id}
