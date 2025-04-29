@@ -7,9 +7,15 @@ interface ProductCardProps {
   name: string;
   imageUrl: string;
   price?: number;
+  isLoggedIn?: boolean;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ name, imageUrl, price }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ 
+  name, 
+  imageUrl, 
+  price, 
+  isLoggedIn = false 
+}) => {
   const isMobile = useIsMobile();
   
   return (
@@ -33,7 +39,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ name, imageUrl, price 
           <h3 className="text-[#252020] text-sm font-bold uppercase line-clamp-2">
             {name}
           </h3>
-          {price ? (
+          {isLoggedIn && price ? (
             <div className="text-[#252020] text-xs font-bold mt-1">
               ${price.toFixed(2)}
             </div>

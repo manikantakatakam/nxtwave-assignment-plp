@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
@@ -11,6 +12,7 @@ import { useProducts } from "@/hooks/use-products";
 export default function Index() {
   const isMobile = useIsMobile();
   const [showFilter, setShowFilter] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Mock authentication state
   
   // Fetch products from API
   const { data: products, isLoading, isError } = useProducts();
@@ -118,6 +120,11 @@ export default function Index() {
   // Use fetched products or fallback if loading/error
   const displayProducts = products || fallbackProducts;
 
+  // Toggle login state (for demonstration purposes)
+  const toggleLogin = () => {
+    setIsLoggedIn(!isLoggedIn);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -135,6 +142,13 @@ export default function Index() {
         </div>
 
         <hr className="border-neutral-200 my-8" />
+
+        {/* Authentication toggle (for testing only) */}
+        <div className="flex justify-center mb-8">
+          <Button onClick={toggleLogin} className="bg-black text-white">
+            {isLoggedIn ? "Sign Out" : "Sign In (Demo)"}
+          </Button>
+        </div>
 
         {/* Product filters and count */}
         <div className="flex justify-between items-center mb-6">
@@ -200,6 +214,7 @@ export default function Index() {
                 name={product.name}
                 imageUrl={product.imageUrl}
                 price={product.price}
+                isLoggedIn={isLoggedIn}
               />
             ))}
           </div>
