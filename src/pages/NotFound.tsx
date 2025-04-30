@@ -19,6 +19,14 @@ const NotFound = () => {
         <a href="/" className="text-blue-500 hover:text-blue-700 underline">
           Return to Home
         </a>
+        <div className="mt-6">
+          <a
+            href="/signin"
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+          >
+            Sign in or Create an account to see pricing
+          </a>
+        </div>
       </div>
     </div>
   );
