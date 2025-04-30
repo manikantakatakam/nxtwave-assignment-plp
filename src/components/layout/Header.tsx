@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Search, Heart, ShoppingBag, Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-
 export const Header = () => {
   const isMobile = useIsMobile();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,8 +20,8 @@ export const Header = () => {
               >
                 <Menu className="w-6 h-6" />
               </button>
-              <div className="text-black text-2xl font-extrabold">
-                LOGO
+              <div className="text-black text-2xl font-extrabold flex items-center">
+                <img src="/Logo.png" alt="Logo" className="h-8 w-auto" />
               </div>
               <div className="flex items-center gap-3">
                 <Search className="w-5 h-5" />
@@ -36,8 +35,8 @@ export const Header = () => {
                 <Menu className="w-6 h-6" />
               </div>
               
-              <div className="text-black text-4xl font-extrabold flex-1 text-center">
-                LOGO
+              <div className="text-black text-4xl font-extrabold flex-1 text-start flex items-center">
+                <img src="/Logo.png" alt="Logo" className="h-10 w-auto" />
               </div>
               
               <div className="flex items-center gap-4">

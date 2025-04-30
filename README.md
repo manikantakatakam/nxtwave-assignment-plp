@@ -1,73 +1,90 @@
-# Welcome to your Lovable project
+# Pixel Perfect Palettes
 
-## Project info
+Pixel Perfect Palettes is a modern React web application built with TypeScript and Vite. It features a product discovery page with filtering capabilities, user authentication (sign-in and sign-up), and a responsive UI powered by Radix UI components and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/3528d040-9899-451c-b431-de227d1bbd02
+## Technologies Used
 
-## How can I edit this code?
+- React 18
+- TypeScript
+- Vite
+- React Router DOM
+- React Query (TanStack Query)
+- Radix UI components
+- Tailwind CSS
+- Node.js (for backend server)
+- Other libraries: bcrypt, jsonwebtoken, mongoose, lucide-react, date-fns, and more
 
-There are several ways of editing your application.
+## Installation
 
-**Use Lovable**
+1. Clone the repository:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/3528d040-9899-451c-b431-de227d1bbd02) and start prompting.
+```bash
+git clone <repository-url>
+cd pixel-perfect-palettes-56
+```
 
-Changes made via Lovable will be committed automatically to this repo.
+2. Install dependencies:
 
-**Use your preferred IDE**
+```bash
+npm install
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Running the Development Server
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Start the development server along with the backend server:
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+This runs both the Vite frontend and the Node.js backend concurrently.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Open your browser and navigate to `http://localhost:5173` (or the port Vite specifies) to view the app.
 
-**Use GitHub Codespaces**
+## Building for Production
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+To build the frontend for production:
 
-## What technologies are used for this project?
+```bash
+npm run build
+```
 
-This project is built with:
+To preview the production build locally:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```bash
+npm run preview
+```
 
-## How can I deploy this project?
+## Project Structure
 
-Simply open [Lovable](https://lovable.dev/projects/3528d040-9899-451c-b431-de227d1bbd02) and click on Share -> Publish.
+- `src/` - Main source code
+  - `components/` - Reusable UI components, layout, and product-related components
+  - `pages/` - Application pages (Index, SignIn, SignUp, NotFound)
+  - `hooks/` - Custom React hooks
+  - `lib/` - Utility functions
+  - `App.tsx` - Main app component with routing
+  - `main.tsx` - React app entry point
+- `server/` - Backend server code (authentication, API)
+- `public/` - Static assets (images, robots.txt, etc.)
+- `package.json` - Project metadata and scripts
+- `vite.config.ts` - Vite configuration
+- `tailwind.config.ts` - Tailwind CSS configuration
 
-## Can I connect a custom domain to my Lovable project?
+## Features
 
-Yes, you can!
+- Product discovery page with filtering sidebar and product cards
+- Responsive design with mobile support
+- User authentication with sign-in and sign-up forms
+- Notifications using toast components
+- Routing with React Router DOM
+- Data fetching and caching with React Query
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Authentication
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- Sign in and sign up pages post credentials to backend endpoints (`/signin` and `/signup`)
+- On successful sign-in, users are redirected to the product discovery page
+- Basic error handling and validation on forms
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
