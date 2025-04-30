@@ -144,11 +144,6 @@ export default function Index() {
         <hr className="border-neutral-200 my-8" />
 
         {/* Authentication toggle (for testing only) */}
-        <div className="flex justify-center mb-8">
-          <Button onClick={toggleLogin} className="bg-black text-white">
-            {isLoggedIn ? "Sign Out" : "Sign In (Demo)"}
-          </Button>
-        </div>
 
         {/* Product filters and count */}
         <div className="flex justify-between items-center mb-6">

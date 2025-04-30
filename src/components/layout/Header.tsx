@@ -10,31 +10,6 @@ export const Header = () => {
 
   return (
     <header className="w-full">
-      {!isMobile && (
-        <div className="bg-black flex w-full items-center justify-center gap-8 md:gap-16 lg:gap-24 text-xs text-[#EB4C6B] font-normal py-1 px-4">
-          <div className="flex items-center gap-2">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/e36faaa33a34101d72a761d73a288b64f64f8f9c?placeholderIfAbsent=true"
-              className="w-3 h-3 object-contain"
-            />
-            <span>Lorem ipsum dolor</span>
-          </div>
-          <div className="hidden md:flex items-center gap-2">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/e36faaa33a34101d72a761d73a288b64f64f8f9c?placeholderIfAbsent=true"
-              className="w-3 h-3 object-contain"
-            />
-            <span>Lorem ipsum dolor</span>
-          </div>
-          <div className="hidden lg:flex items-center gap-2">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/2ca174a4cd604d5f81df9446568d6545/e36faaa33a34101d72a761d73a288b64f64f8f9c?placeholderIfAbsent=true"
-              className="w-3 h-3 object-contain"
-            />
-            <span>Lorem ipsum dolor</span>
-          </div>
-        </div>
-      )}
 
       <div className="border-b border-neutral-200 py-3 px-4 md:py-6 md:px-8 lg:px-12">
         <div className="container mx-auto flex items-center justify-between">
